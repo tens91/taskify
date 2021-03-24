@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   private # requires the fields to be completed 
           # and doesn't allow for malicious ingection of code
     def task_params
-      params.require(:task).permit(:title, :body)
+      params.require(:task).permit(:title, :body, :status)
     end
 
 

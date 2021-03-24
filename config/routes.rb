@@ -4,7 +4,9 @@ Rails.application.routes.draw do
                      # the tasks>index page in ./views/tasks/index.html.erb
 
 
-  resources :tasks
+  resources :tasks do
+    resources :notes
+  end
 
   # get "/tasks", to: 'tasks#index'
   # get "/tasks/:id", to: "tasks#show"

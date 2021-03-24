@@ -1,11 +1,33 @@
-<h1><%= @task.title %></h1>
+<h1><a href="/tasks/<%=@task.id - 1%>"><</a> <%= @task.title %> <a href="/tasks/<%=@task.id + 1%>">></a></h1>
 
 <p><%= @task.body %></p>
 
+<p><%= @task.status %></p>
+
+<h2> Notes </h2>
+<%= render @task.notes %>
+
+<h4> Add a note: </h4>
+
+<%= form_with model: [ @task, @task.notes.build ] do |form| %> # TODO: this should eventually take the logged in user's name
+    <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    </p>
+    <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
 
 <ul>
     <li> <%= link_to "Edit this task", edit_task_path(@task) %> </li>
     <li> <%= link_to "Delete this task", task_path(@task),
                                         method: :delete,
                                         data: {confirm: "Are you sure?" } %> </li>
+    <li><a href="/tasks/<%=@task.id - 1%>">Previous Task</a></li>
+    <li><a href="/tasks/<%=@task.id + 1%>">Next Task</a></li>
 </ul>
