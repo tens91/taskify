@@ -1,0 +1,15 @@
+<h1>Tasks#index</h1>
+<p>Find me in app/views/tasks/index.html.erb</p>
+
+<ul style="list-style-type:none;">
+    <% @tasks.each do |task| %>
+        <li style="border: 1px solid black; margin-bottom:5px;">
+            <%= link_to task.title, task %>
+        </a>
+        </li>
+    <% end %>
+
+    <%= link_to "New Task", new_task_path %>
+    <br>
+    <%= Time.now %>
+</ul>
